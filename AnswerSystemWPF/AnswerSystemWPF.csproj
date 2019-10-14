@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D26DEFF7-3D8E-45F7-B276-EDE32A54E099}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>AnswerSystemWPF</RootNamespace>
+    <AssemblyName>AnswerSystemWPF</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Style\CustomWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\return.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\btn_back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\btn_gackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\btn2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\btn3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Get It Now_Button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\little_man.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\login_background_1280_1080.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\main_bottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\main_home_back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\main_home_back2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\main_home_back3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\main_top_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\main_top_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\main_top_top.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\mian_home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\mohu20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\mohu25.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\mohu30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\mohu40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\mohu60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Prev.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Ribbon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Submit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Title_nobackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\upload.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

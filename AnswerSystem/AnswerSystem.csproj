@@ -13,7 +13,7 @@
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -31,9 +31,28 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ico.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net40\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net40\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net40\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,32 +63,176 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="BLL\TxtReadLoader.cs" />
+    <Compile Include="Cons\Cell.cs" />
+    <Compile Include="Cons\MyDelegate.cs" />
+    <Compile Include="Cons\MyPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Cons\MyPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Cons\MyRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Cons\MyTableLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Cons\MyTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\UC_Examination.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UC_Examination.Designer.cs">
+      <DependentUpon>UC_Examination.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UC_SelectSubject.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UC_SelectSubject.Designer.cs">
+      <DependentUpon>UC_SelectSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frmHome.Designer.cs">
+      <DependentUpon>frmHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\AppSetting.cs" />
+    <Compile Include="Helper\ComputerInfo.cs" />
+    <Compile Include="Helper\ConvExtension.cs" />
+    <Compile Include="Helper\InI.cs" />
+    <Compile Include="Helper\IvyException.cs" />
+    <Compile Include="Helper\KeyPressJudge.cs" />
+    <Compile Include="Helper\LogHelper.cs" />
+    <Compile Include="Helper\MD5.cs" />
+    <Compile Include="Helper\Request.cs" />
+    <Compile Include="Helper\SoftUpdate.cs" />
+    <Compile Include="IBLL\IReadLoader.cs" />
+    <Compile Include="Model\ExaminationPaper.cs" />
+    <Compile Include="Model\Student.cs" />
+    <Compile Include="Model\SubjectEnum.cs" />
+    <Compile Include="Model\Topic.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Cons\MyPanel.resx">
+      <DependentUpon>MyPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cons\MyTextBox.resx">
+      <DependentUpon>MyTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UC_Examination.resx">
+      <DependentUpon>UC_Examination.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UC_SelectSubject.resx">
+      <DependentUpon>UC_SelectSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHome.resx">
+      <DependentUpon>frmHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
+    <None Include="Lib\IVYGetValue.ini" />
+    <None Include="Lib\IVYGetValue.map" />
+    <None Include="Lib\IVYMain.ini" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ReadWriteContext\ReadWriteContext.csproj">
+      <Project>{620e5112-7d09-4c0c-ac13-88efd46ba101}</Project>
+      <Name>ReadWriteContext</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Get It Now_Button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\little_man.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login_background_1280_1080.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Title_nobackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_gackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\main_top_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\main_top_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\main_top_top.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mian_home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\main_bottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ico.ico" />
+    <Content Include="Lib\IVYGetValue.dll" />
+    <Content Include="Lib\IVYUpload.dll" />
+    <Content Include="Resources\Java试题.txt" />
+    <Content Include="Resources\Net试题.txt" />
+    <None Include="Resources\main_home_back3.png" />
+    <None Include="Resources\upload.png" />
+    <None Include="Resources\return.png" />
+    <None Include="Resources\Submit.png" />
+    <None Include="Resources\btn_back.png" />
+    <None Include="Resources\Prev.png" />
+    <None Include="Resources\Next.png" />
+    <None Include="Resources\mohu25.png" />
+    <None Include="Resources\mohu30.png" />
+    <None Include="Resources\mohu40.png" />
+    <None Include="Resources\mohu20.png" />
+    <None Include="Resources\mohu60.png" />
+    <None Include="Resources\btn2.png" />
+    <None Include="Resources\btn.png" />
+    <None Include="Resources\btn3.png" />
+    <None Include="Resources\main_home_back.png" />
+    <None Include="Resources\main_home_back2.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>xcopy /e /r /y $(ProjectDir)Lib $(ProjectDir)$(OutDir)</PreBuildEvent>
+  </PropertyGroup>
 </Project>
