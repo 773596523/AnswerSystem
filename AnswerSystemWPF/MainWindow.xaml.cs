@@ -24,7 +24,22 @@ namespace AnswerSystemWPF
         public MainWindow()
         {
             InitializeComponent();
+            InitWindow();
+        }
 
+        private void InitWindow()
+        {
+            this.MaxWidth = SystemParameters.WorkArea.Width;
+            this.MaxHeight = SystemParameters.WorkArea.Height;
+        }
+
+        private void BtnClose_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("确定要退出吗", "提示", MessageBoxButton.YesNo, MessageBoxImage.Question) ==
+                MessageBoxResult.Yes)
+            {
+                this.Close();
+            }
         }
     }
 }

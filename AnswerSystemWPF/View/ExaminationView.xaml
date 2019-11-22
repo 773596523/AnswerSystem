@@ -1,0 +1,132 @@
+﻿<Page x:Class="AnswerSystemWPF.View.ExaminationView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AnswerSystemWPF.View"
+      xmlns:vm="clr-namespace:AnswerSystemWPF.ViewModel"
+      xmlns:con="clr-namespace:AnswerSystemWPF.Converter"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ExaminationView" Foreground="White" FontSize="20" 
+      Tag="{Binding SelectSubject,Mode=OneWayToSource}" >
+    <Page.DataContext>
+        <vm:ExaminationViewModel />
+    </Page.DataContext>
+    <Page.Resources>
+        <con:TopicStatusConverter x:Key="StatusConverter" />
+    </Page.Resources>
+    <Page.InputBindings>
+        <KeyBinding Modifiers="Control" Key="S" Command="{Binding SaveTopiCommand}"></KeyBinding>
+    </Page.InputBindings>
+
+    <Grid Background="#219ACF" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="243" />
+            <ColumnDefinition Width="7*" />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" Grid.Column="0" Background="#1B69AA">
+            <TextBlock  Text="全部题目"  FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" />
+        </Border>
+
+        <Border Grid.Row="0" Grid.Column="1"  Background="#1B69AA">
+            <TextBlock FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" >
+                    <TextBlock Text="{Binding SelectSubject,Mode=OneWay}" />试题
+                </TextBlock>
+        </Border>
+
+        <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" BorderThickness="1" BorderBrush="#646464"  />
+        <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" BorderThickness="1" BorderBrush="#646464"  />
+
+        <DockPanel Grid.Row="1" Grid.Column="0" Margin="1" >
+            <TextBlock DockPanel.Dock="Bottom" FontSize="12" TextWrapping="Wrap"
+                       Text="*绿色为已完成题目,红色为当前题目" Padding="3" />
+
+            <ListBox Background="Transparent" ItemsSource="{Binding Topics,Mode=TwoWay}" BorderThickness="0"  BorderBrush="Transparent" 
+                     SelectedItem="{Binding SelectTopic,Mode=TwoWay}" SelectionChanged="Selector_OnSelectionChanged"  >
+                <ListBox.ItemTemplate >
+                    <DataTemplate  >
+                        <Label x:Name="imgAnswerStatus" Content="{Binding Index}" Width="30" Height="30" Cursor="Hand" Foreground="White" 
+                                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  FontSize="15" >
+                            <Label.Background>
+                                <ImageBrush  ImageSource="{Binding AnSwer,Converter={StaticResource StatusConverter}}" />
+                            </Label.Background>
+                        </Label>
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem},Mode=FindAncestor},Path=IsSelected}" 
+                                         Value="True">
+                                <Setter TargetName="imgAnswerStatus" Property="Background"  >
+                                    <Setter.Value>
+                                        <ImageBrush  ImageSource="../Resources/Images/btn3.png" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.Template>
+                    <ControlTemplate TargetType="ListBox">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                            <WrapPanel Orientation="Horizontal"  IsItemsHost="True" />
+                        </ScrollViewer>
+                    </ControlTemplate>
+                </ListBox.Template>
+                <ListBox.ItemContainerStyle>
+                    <StaticResource ResourceKey="LIstBoxTransparent" ></StaticResource>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+
+        </DockPanel>
+
+        <Grid Grid.Row="1" Grid.Column="1" Margin="1" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"  Padding="2" TextWrapping="Wrap" Text="{Binding Problem,Mode=OneWay}" />
+            <TextBox  x:Name="txtAnSwer" Grid.Row="1"  Background="WhiteSmoke" AcceptsReturn="True" Padding="3" Margin="10" 
+                      VerticalScrollBarVisibility="Auto"  HorizontalScrollBarVisibility="Auto"
+                      Text="{Binding SelectTopic.AnSwer,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+
+            <Grid Grid.Row="2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Padding="2" FontSize="12"
+                           TextWrapping="Wrap" Text="*自动保存，Ctrl+S手动保存,PageUp上一题，PageDown下一题" />
+                <Image x:Name="btnReturn" Grid.Column="1" Width="85" Height="35" 
+                       Source="../Resources/Images/return.png" MouseLeftButtonUp="BtnReturn_OnMouseLeftButtonUp" Cursor="Hand"  />
+                <Image Grid.Column="2" Width="85" Height="35"  Source="../Resources/Images/upload.png" Cursor="Hand" >
+                    <Image.InputBindings>
+                        <MouseBinding  MouseAction="LeftClick" Command="{Binding SubmitCommand}" />
+                    </Image.InputBindings>
+                </Image>
+                <Image Grid.Column="3" Width="85" Height="35"  Source="../Resources/Images/Prev.png" Cursor="Hand"  >
+                    <Image.InputBindings>
+                        <MouseBinding  MouseAction="LeftClick" Command="{Binding PrevCommand}" />
+                    </Image.InputBindings>
+                </Image>
+                <Image Grid.Column="4" Width="85" Height="35" Margin="1,1,10,1"  Source="../Resources/Images/Next.png" Cursor="Hand"  >
+                    <Image.InputBindings>
+                        <MouseBinding  MouseAction="LeftClick" Command="{Binding NextCommand}" />
+                    </Image.InputBindings>
+                </Image>
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+
+</Page>

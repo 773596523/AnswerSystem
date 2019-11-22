@@ -4,9 +4,84 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnswerSystemWPF"
+        xmlns:vm="clr-namespace:AnswerSystemWPF.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="在线考试答题系统" x:Name="mainWIndow" Height="768" Width="1024" Foreground="White"
+        Style="{StaticResource CustomWindowChrome}"
+        WindowState="Normal" WindowStartupLocation="CenterScreen" Icon="ico.ico" >
+    <Window.DataContext>
+        <vm:MainWindowModel />
+    </Window.DataContext>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
+        <Grid Row="0" >
+            <Grid.Background>
+                <ImageBrush ImageSource="Resources/Images/main_top_background.png" />
+            </Grid.Background>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="17" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Image Grid.Row="0" Grid.RowSpan="2" Width="255" Height="34" Margin="20,5"
+                   Source="Resources/Images/Title_nobackground.png" HorizontalAlignment="Left" />
+            <Image Grid.Row="0" Source="Resources/Images/main_top_top.png"  />
+
+            <Grid Grid.Row="1" Margin="0,4,0,8"  HorizontalAlignment="Right" >
+                <Grid.Background>
+                    <ImageBrush ImageSource="Resources/Images/main_top_right.png"   />
+                </Grid.Background>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  Width="*"/>
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0"  MinWidth="700"  Orientation="Horizontal" Margin="0,0,0,-2"  >
+                    <Image Source="Resources/Images/little_man.png" Width="22" Height="25" Margin="300,0,0,0" VerticalAlignment="Bottom" />
+                    <TextBlock Text="学号:" Margin="20,0,0,0" VerticalAlignment="Bottom" />
+                    <TextBlock Text="{Binding LoginStudent.StudentID,Mode=OneWay}" Margin="3,0,0,0" VerticalAlignment="Bottom" />
+                    <TextBlock Text="姓名:" Margin="20,0,0,0" VerticalAlignment="Bottom" />
+                    <TextBlock Text="{Binding LoginStudent.Name,Mode=OneWay}" Margin="3,0,0,0" VerticalAlignment="Bottom"  />
+                </StackPanel>
+
+                <Button x:Name="btnClose" Grid.Column="1" Margin="0,0,10,-2" Style="{StaticResource ButtonTransparent}"
+                        Click="BtnClose_OnClick" >
+                    <Image Source="Resources/Images/Exit.png" />
+                </Button>
+
+            </Grid>
+
+        </Grid>
+
+        <Grid Row="1">
+            <Grid.Background>
+                <ImageBrush ImageSource="Resources/Images/main_bottom.png" />
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="35" />
+            </Grid.RowDefinitions>
+
+            <Grid Row="0" Margin="20,20,20,5">
+                <Grid.Background>
+                    <ImageBrush ImageSource="Resources/Images/main_home_back.png" />
+                </Grid.Background>
+
+                <Grid Margin="20,30,20,10">
+                    <Grid.Background>
+                        <ImageBrush ImageSource="Resources/Images/main_home_back2.png" />
+                    </Grid.Background>
+                    <Frame x:Name="FraCenter" Source="View/SelectSubjectView.xaml" NavigationUIVisibility="Hidden"  Padding="3,1,3,8" />
+                </Grid>
+            </Grid>
+
+            <TextBlock Grid.Row="1" HorizontalAlignment="Center" Height="25" Margin="0,0,0,3" FontWeight="Bold" 
+                       Text="{StaticResource CopyrightInfo}"  />
+        </Grid>
     </Grid>
 </Window>

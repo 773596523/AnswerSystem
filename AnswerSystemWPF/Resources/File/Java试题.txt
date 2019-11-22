@@ -1,0 +1,35 @@
+<problems> 面向对象的特征有哪些方面</problems>
+<problems>int 和 Integer 有什么区别</problems>
+<problems>HashMap和Hashtable的区别</problems>
+<problems>GC是什么? 为什么要有GC?</problems>
+<problems>给我一个你最常见到的runtime exception</problems>
+<problems>接口是否可继承接口? 抽象类是否可实现(implements)接口? 抽象类是否可继承实体类(concrete class)?</problems>
+<problems>你所知道的集合类都有哪些？主要方法？</problems>
+<problems>char型变量中能不能存贮一个中文汉字?为什么?</problems>
+<problems>JSP的内置对象及方法</problems>
+<problems>线程的基本概念、线程的基本状态以及状态之间的关系</problems>
+<problems>说出数据连接池的工作机制是什么</problems>
+<problems>启动一个线程是用run()还是start()</problems>
+<problems>JSP中动态INCLUDE与静态INCLUDE的区别</problems>
+<problems>forward 和redirect的区别</problems>
+<problems>sleep() 和 wait() 有什么区别</problems>
+<problems>final, finally, finalize的区别</problems>
+<problems>String 和StringBuffer的区别</problems>
+<problems>是否可以继承String类</problems>
+<problems>ORM 有哪些框架？ 框架原理?</problems>
+<problems>什么是设计模式？请 列举几个常用的设计模式</problems>
+
+<problems>请编程实现一个冒泡排序算法</problems>
+<problems>产生一个int数组，长度为100，并向其中随机插入1-100，并且不能重复</problems>
+<problems>a=10，b=15，请在不使用第三方变量的情况下，把a、b的值互换</problems>
+<problems>假设有人民币面值100,50,20,10,5,1各无数张，求出最少的张数N(不用列举具体面值)，可以汇总金额386元，写出伪代码或者算法原理</problems>
+<problems>编写一个单例（Singleton）类</problems>
+<problems>请将任意字符串,如:"I am a student"按单词逆序输出 如"student a am I"</problems>
+<problems>有一对兔子，从出生后第3个月起每个月都生一对兔子，小兔子长到第三个月后每个月又生一对兔子，假如兔子都不死，设计算法，算出从第一对兔子出生10个月后，兔子总数</problems>
+<problems>有1、2、3、4个数字，能组成多少个互不相同且无重复数字的三位数？都是多少？</problems>
+<problems>1、1、2、3、5、8、13、21、34，....用递归写出算法，算出第30个数</problems>
+
+<problems>假设有A,B,C,D,E,F六个硬币，五个重量相同，一个重量较轻，通过一把天平秤，最少称几次，才能准确找到较轻的硬币，并且说明方法</problems>
+<problems>假设有A,B,C,D四瓶酒一瓶有毒,用人品尝测试。每次测试结果8小时后才会得出，而你只有8个小时的时间,至少需要多少人测试，并且说明方法。（提示一个人可以同时品尝多种酒）</problems>
+<problems>有两个骰子，每一个骰子都是6面的正方体，每一个面上可以放任意一位数字(0-9)，列出两个骰子每个面的数字，使得两个骰子可以组合数字01到31 (提示6跟9可共用)</problems>
+<problems>四个小孩在校园内踢球．“砰”的一声，不知是谁踢的球把课堂客户的玻璃打破了，王老师跑出来一看，问“是谁打破了玻璃？”小张说：“是小强打破的．”小强说：“是小胖打破的．”小明说：“我没有打破窗户的玻璃．”小胖说：“王老师，小强在说谎，不要相信他．”这四个小孩只有一个说了老实话．请判断：说实话的是______；是______打破窗户的玻璃．</problems>

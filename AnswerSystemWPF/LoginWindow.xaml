@@ -2,15 +2,29 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnswerSystemWPF"
+        xmlns:vm="clr-namespace:AnswerSystemWPF.ViewModel"
+        xmlns:behaviors="clr-namespace:AnswerSystemWPF.Behaviors"
+        xmlns:validationRules="clr-namespace:AnswerSystemWPF.ValidationRules"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="600" Width="900" 
+        Title="在线考试系统-登录" x:Name="loginWindow" Height="625" Width="925" BorderThickness="24"
         WindowStartupLocation="CenterScreen" Style="{StaticResource CustomWindowChrome}" 
-        MouseLeftButtonDown="LoginWindow_OnMouseLeftButtonDown" Foreground="White" >
+        MouseLeftButtonDown="LoginWindow_OnMouseLeftButtonDown" Foreground="White" Icon="ico.ico"   >
+    <Window.Effect>
+        <DropShadowEffect BlurRadius="24" Color="#FF858484" Direction="90" ShadowDepth="3"  />
+    </Window.Effect>
     <Window.Background>
         <ImageBrush ImageSource="Resources/Images/login_background_1280_1080.png" />
     </Window.Background>
+    <Window.DataContext>
+        <vm:LoginWindowModel />
+    </Window.DataContext>
+    <i:Interaction.Behaviors>
+        <behaviors:ValidationExceptionBehavior />
+    </i:Interaction.Behaviors>
+
     <Grid Margin="3">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
@@ -20,10 +34,16 @@
 
         <Grid Grid.Row="0"  Height="35" >
             <Image Grid.Row="0"  Width="310" Margin="0,0,0,5"  Source="Resources/Images/Title_nobackground.png" />
-            <Image Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,10,5" Source="Resources/Images/Exit.png" Cursor="Hand"    />
+            <Button Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,10,5" Style="{DynamicResource ButtonTransparent}" 
+                        Click="btnClose_OnClick">
+                <Image Source="Resources/Images/Exit.png" />
+            </Button>
         </Grid>
 
-        <Grid Grid.Row="1" Width="450" Height="250"  >
+
+
+        <Grid Grid.Row="1" Width="460" Height="280" KeyDown="UIElement_OnKeyDown" 
+              FocusManager.FocusedElement="{Binding ElementName=txtId}"  >
             <Grid.RowDefinitions >
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*"  />
@@ -31,25 +51,46 @@
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
-                <TextBlock  Width="100"    TextAlignment="Center"
-                            Margin="5"  FontSize="25" FontWeight="Bold" Text="学  号："  />
-                <TextBox Width="300" Margin="5" VerticalAlignment="Center"  FontSize="25" Text="" />
+                <TextBlock  Width="100"    TextAlignment="Center" Margin="20,10"  FontSize="25" FontWeight="Bold" Text="学  号："  />
+                <TextBox x:Name="txtId" Width="300" Margin="10" VerticalAlignment="Center"  FontSize="25" 
+                         Validation.ErrorTemplate="{StaticResource ErrorTemplateStyle}" >
+                    <TextBox.Text>
+                        <Binding Path="LoginStudent.StudentID" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True" >
+                            <Binding.ValidationRules>
+                                <validationRules:TextBoxStringValidationRules ValidatesOnTargetUpdated="False" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
             </StackPanel>
 
             <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center">
-                <TextBlock  Width="100"    TextAlignment="Center"
-                            Margin="5"  FontSize="25" FontWeight="Bold" Text="姓  名："  />
-                <TextBox Width="300" Margin="5" VerticalAlignment="Center"  FontSize="25" Text="" />
+                <TextBlock  Width="100"    TextAlignment="Center" Margin="20,10"  FontSize="25" FontWeight="Bold" Text="姓  名："  />
+                <TextBox x:Name="txtName" Width="300" Margin="10" VerticalAlignment="Center"  FontSize="25" 
+                        Validation.ErrorTemplate="{StaticResource ErrorTemplateStyle}" >
+                    <TextBox.Text>
+                        <Binding Path="LoginStudent.Name" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                            <Binding.ValidationRules>
+                                <validationRules:TextBoxStringValidationRules ValidatesOnTargetUpdated="False" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
             </StackPanel>
 
             <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center">
-                <Button Content="确  定" Margin="50,5,10,5"  Style="{DynamicResource BaseButton}" Width="150" Height="70" FontSize="25" />
-                <Button Content="取  消" Margin="50,5,5,5" Style="{DynamicResource BaseButton}" Width="150" Height="70" FontSize="25" />
+                <Button x:Name="btnYes" Content="确  定" Margin="40,5,10,5"  Style="{DynamicResource SysButton}" 
+                        Width="150" Height="70" FontSize="25"
+                        Command="{Binding btnLogin}" CommandParameter="{Binding ElementName=loginWindow}"  />
+                <Button x:Name="btnCancel" Content="取  消" Margin="70,5,5,5" Style="{DynamicResource SysButton}" 
+                        Width="150" Height="70" FontSize="25" Click="btnClose_OnClick"/>
             </StackPanel>
 
         </Grid>
 
 
-        <TextBlock Grid.Row="2" HorizontalAlignment="Center" Height="25" Margin="0,0,0,2" FontWeight="Bold" Text="©2019 常春藤软件有限公司"  />
+        <TextBlock Grid.Row="2" HorizontalAlignment="Center" Height="25" Margin="0,0,0,3" FontWeight="Bold"
+                   Text="{StaticResource CopyrightInfo}"  />
     </Grid>
+
 </Window>

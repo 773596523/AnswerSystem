@@ -59,5 +59,44 @@ namespace AnswerSystemWPF.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   查找类似 &lt;problems&gt; 面向对象的特征有哪些方面&lt;/problems&gt;
+        ///&lt;problems&gt;int 和 Integer 有什么区别&lt;/problems&gt;
+        ///&lt;problems&gt;HashMap和Hashtable的区别&lt;/problems&gt;
+        ///&lt;problems&gt;GC是什么? 为什么要有GC?&lt;/problems&gt;
+        ///&lt;problems&gt;给我一个你最常见到的runtime exception&lt;/problems&gt;
+        ///&lt;problems&gt;接口是否可继承接口? 抽象类是否可实现(implements)接口? 抽象类是否可继承实体类(concrete class)?&lt;/problems&gt;
+        ///&lt;problems&gt;你所知道的集合类都有哪些？主要方法？&lt;/problems&gt;
+        ///&lt;problems&gt;char型变量中能不能存贮一个中文汉字?为什么?&lt;/problems&gt;
+        ///&lt;problems&gt;JSP的内置对象及方法&lt;/problems&gt;
+        ///&lt;problems&gt;线程的基本概念、线程的基本状态以及状态之间的关系&lt;/problems&gt;
+        ///&lt;problems&gt;说出数据连接池的工作机制是什么&lt;/problems&gt;
+        ///&lt;problems&gt; [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string Java试题 {
+            get {
+                return ResourceManager.GetString("Java试题", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 &lt;problems&gt; C#中值类型和引用类型分别有哪些？&lt;/problems&gt;
+        ///&lt;problems&gt;接口是否可继承接口? 抽象类是否可实现(implements)接口? 抽象类是否可继承实体类(concrete class) &lt;/problems&gt;
+        ///&lt;problems&gt;启动一个线程是用run()还是start()?&lt;/problems&gt;
+        ///&lt;problems&gt;GC是什么? 为什么要有GC?&lt;/problems&gt;
+        ///&lt;problems&gt;C#中值类型和引用类型的区别&lt;/problems&gt;
+        ///&lt;problems&gt;post、get的区别&lt;/problems&gt;
+        ///&lt;problems&gt;StringBuilder 和 String 的区别？&lt;/problems&gt;
+        ///&lt;problems&gt;BS与CS的联系与区别&lt;/problems&gt;
+        ///&lt;problems&gt;C#中的委托是什么？事件是不是一种委托？&lt;/problems&gt;
+        ///&lt;problems&gt;简述 private、 protected、 public、internal 修饰符的访问权限&lt;/problems&gt;
+        ///&lt;problems&gt;ADO.net中常用的对象有哪些？分别描述一下 [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string Net试题 {
+            get {
+                return ResourceManager.GetString("Net试题", resourceCulture);
+            }
+        }
     }
 }

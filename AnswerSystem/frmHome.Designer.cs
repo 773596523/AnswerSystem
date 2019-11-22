@@ -319,7 +319,6 @@
             this.Name = "frmHome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "答题系统";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmHome_FormClosing);
             this.Shown += new System.EventHandler(this.frmHome_Shown);
             this.tlpHomeBack.ResumeLayout(false);

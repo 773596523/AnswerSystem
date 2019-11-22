@@ -1,12 +1,13 @@
 ﻿<Application x:Class="AnswerSystemWPF.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:AnswerSystemWPF"
-             StartupUri="LoginWindow.xaml">
+             xmlns:local="clr-namespace:AnswerSystemWPF">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Style/GlobalStyle.xaml"/>
                 <ResourceDictionary Source="Style/CustomWindow.xaml"/>
+                <ResourceDictionary Source="Style/TextBoxStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
